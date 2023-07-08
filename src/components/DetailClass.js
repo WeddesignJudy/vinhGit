@@ -4,29 +4,33 @@ import { getAllCourses } from '../helper/courseHelper';
 import { getMentors } from '../helper/helper';
 import { createBooking } from '../helper/bookingHelper';
 import React, { useState, useEffect } from 'react';
-
+import useFetch from '../hooks/fetch.hook';
 export default function Detail() {
   const { id } = useParams();
   const [grades, setGrades] = useState([]);
-  const [grade, setGrade] = useState([]);
+  const [grade,setGrade] = useState([]);
   const [mentors, setMentor] = useState([]);
   const [courses, setCourses] = useState([]);
-  const [newData,setNewData]  = useState([])
+  const [newData, setNewData] = useState([]);
+  const [{ apiData }] = useFetch();
+  // const userId = apiData?._id
   const fetchData = async () => {
     const grades = await getAllGrades();
     const courses = await getAllCourses();
     const mentors = await getMentors()
+    // const userId = apiData?._id;
     setMentor(mentors.data);
     setGrades(grades.data)
     setCourses(courses.data)
-    // console.log(grades)
+    
   }
 
-  const handleBooking = async (event, newData) => {
+  const handleBooking = async (event) => {
     event.preventDefault()
     try {
-      const response = await createBooking(newData);
-      // setNewData(id)
+
+      let booking = {'user': apiData?._id, 'grade': id}
+      const response = await createBooking(booking);
       
     } catch (error) {
       console.error(error)
@@ -61,19 +65,18 @@ export default function Detail() {
               if (course._id == grade.course)
                 return course.price;
             })}</b></p>
-            <button className="mt-8 font-serif bg-green-400 hover:bg-yellow-200 text-white font-bold py-2 px-4 rounded-3xl w-36 h-12" onClick={(event) => handleBooking(event, newData)}>Book Now</button>
+            <button className="mt-8 font-serif bg-green-400 hover:bg-yellow-200 text-white font-bold py-2 px-4 rounded-3xl w-36 h-12" onClick={(event) => handleBooking(event)}>Book Now</button>
           </div>
 
         </div>
         <div className='col-span-5'>
-          <img className="w-auto h-96" src='/image/yoga1.png' />
+          <img className="w-auto h-96" src='/assets/yoga1.png' />
         </div>
       </div>
       <div className='grid grid-cols-2 mt-20 bg-gray-100'>
-        <img className='w-64 h-64 rounded-full' src='/image/yogaSlogan.png' />
+        <img className='w-64 h-64 rounded-full' src='/assets/yogaSlogan.png' />
         <p className='text-lg font-serif mt-14 mr-14'>Yoga is the art of uniting the body, mind, and spirit to discover inner peace, embrace self-awareness, and unlock the limitless potential within.</p>
       </div>
     </div>
   )
 }
-

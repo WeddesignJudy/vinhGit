@@ -27,10 +27,10 @@ export default function Class() {
     return (
         <div>
             <div className="grid grid-cols-4">
-                <div className="bg-gray-200"><img className="w-auto h-auto" src="/image/poster1.png" alt="yoga" /></div>
-                <div className="bg-gray-200"><img className="w-auto h-auto" src="/image/poster2.png" alt="yoga" /></div>
-                <div className="bg-gray-200"><img className="w-auto h-auto" src="/image/poster3.png" alt="yoga" /></div>
-                <div className="bg-gray-200"><img className="w-auto h-auto" src="/image/poster4.png" alt="yoga" /></div>
+                <div className="bg-gray-200"><img className="w-auto h-auto" src="/assets/poster1.png" alt="yoga" /></div>
+                <div className="bg-gray-200"><img className="w-auto h-auto" src="/assets/poster2.png" alt="yoga" /></div>
+                <div className="bg-gray-200"><img className="w-auto h-auto" src="/assets/poster3.png" alt="yoga" /></div>
+                <div className="bg-gray-200"><img className="w-auto h-auto" src="/assets/poster4.png" alt="yoga" /></div>
             </div>
             <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-6xl lg:px-8">
                 <div className="space-y-2 mt-15 mb-18">
@@ -59,7 +59,7 @@ export default function Class() {
 
                         <div className="bg-gray-100 box-content h-auto w-auto p-4" key={grade._id}>
                             <div className="aspect-h-1 aspect-w-1 w-50 overflow-hidden rounded-sm bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                                <Link to={`/detail/${grade._id}`}><img className="w-auto h-auto" src="./image/yoga1.png" alt="no" /></Link>
+                                <Link to={`/detail/${grade._id}`}><img className="w-auto h-auto" src="./assets/yoga1.png" alt="no" /></Link>
                             </div>
 
                             <div className="mt-3">
@@ -104,7 +104,7 @@ export default function Class() {
                     ))}
                 </div>
                 <div className='grid grid-cols-2 mt-20 bg-gray-100'>
-                    <img className='w-64 h-64 rounded-full' src='./image/yogaSlogan.png' />
+                    <img className='w-64 h-64 rounded-full' src='./assets/yogaSlogan.png' />
                     <p className='text-lg font-serif mt-14 mr-14'>Yoga is the art of uniting the body, mind, and spirit to discover inner peace, embrace self-awareness, and unlock the limitless potential within.</p>
                 </div>
 
